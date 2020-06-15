@@ -1,0 +1,18 @@
+{
+  "name": "com.myutils.transformtools",
+  "version": "1.0.0",
+  "displayName": "Transform Tools",
+  "description": "Tools to follow, lookAt, rotateAround, etc.",
+  "unity": "2019.3",
+  "unityRelease": "15f1",
+  "keywords": [
+    "keyword1",
+    "keyword2",
+    "keyword3"
+  ],
+  "author": {
+    "name": "Jose Luis Lleyda",
+    "email": "jl.lleyda@gmail.com",
+    "url": ""
+  }
+}
