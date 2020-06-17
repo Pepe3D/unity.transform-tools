@@ -8,10 +8,7 @@ public class RotateSelf : MonoBehaviour {
 	public float rotateSpeed = 2f;
 	public Vector3 rotateAxis;
 	public bool isRelativeToLocalAxis;
-		
-	[Header("Update")]
 	public bool inLateUpdate = false;
-	public bool inFixedUpdate = false;
 
 	private Transform originT;
 	
@@ -32,7 +29,6 @@ public class RotateSelf : MonoBehaviour {
 		origin = this.gameObject;
 	}
 	
-	void Update () { 		if (!inLateUpdate && !inFixedUpdate) GameLoop (); }
-	void LateUpdate () { 	if (inLateUpdate && !inFixedUpdate) GameLoop (); }
-	void FixedUpdate () {	if (inFixedUpdate && !inLateUpdate) GameLoop (); }
+	void Update() { 		if (!inLateUpdate) GameLoop(); }
+	void LateUpdate() { 	if (inLateUpdate) GameLoop(); }
 }

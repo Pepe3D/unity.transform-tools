@@ -10,10 +10,7 @@ public class Wave : MonoBehaviour {
 	public float timeBetweenPositions = 1f;
 	public float fps = 60f;
 	public bool waveSlerp = true;
-
-	[Header("Update")]
 	public bool inLateUpdate = false;
-	public bool inFixedUpdate = false;
 
 	private float waveFrames = 0f;
 	private Vector3 newDestination; 
@@ -43,7 +40,6 @@ public class Wave : MonoBehaviour {
 		origin = this.gameObject;
 	}
 
-	void Update () { 		if (!inLateUpdate && !inFixedUpdate) GameLoop (); }
-	void LateUpdate () { 	if (inLateUpdate && !inFixedUpdate) GameLoop (); }
-	void FixedUpdate () {	if (inFixedUpdate && !inLateUpdate) GameLoop (); }
+	void Update() { 		if (!inLateUpdate) GameLoop(); }
+	void LateUpdate() { 	if (inLateUpdate) GameLoop(); }
 }

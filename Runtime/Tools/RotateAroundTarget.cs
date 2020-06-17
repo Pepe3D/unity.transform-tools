@@ -10,10 +10,7 @@ public class RotateAroundTarget : MonoBehaviour {
 	public Vector3 rotateAroundAxis;
 	private Transform originRotateAroundT;
 	private Transform targetToRotateAroundT;
-
-	[Header("Update")]
 	public bool inLateUpdate = false;
-	public bool inFixedUpdate = false;
 
 	private Transform originT;
 	private Transform targetT;
@@ -42,7 +39,6 @@ public class RotateAroundTarget : MonoBehaviour {
 		target.transform.position = this.gameObject.transform.position + this.gameObject.transform.forward;
 	}
 
-	void Update () { 		if (!inLateUpdate && !inFixedUpdate) GameLoop (); }
-	void LateUpdate () { 	if (inLateUpdate && !inFixedUpdate) GameLoop (); }
-	void FixedUpdate () {	if (inFixedUpdate && !inLateUpdate) GameLoop (); }
+	void Update() { 		if (!inLateUpdate) GameLoop(); }
+	void LateUpdate() { 	if (inLateUpdate) GameLoop(); }
 }

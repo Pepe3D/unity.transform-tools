@@ -1,6 +1,6 @@
 {
   "name": "com.myutils.transformtools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Transform Tools",
   "description": "Tools to follow, lookAt, rotateAround, etc.",
   "unity": "2019.3",
