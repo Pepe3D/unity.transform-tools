@@ -2,28 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScaleAsTarget : MonoBehaviour {
+public class ScaleAsTarget : TransformToolBase {
 
-	public GameObject origin;
-	public GameObject target;
-	
 	public float followSpeed = 2f;
 	public bool fixedPosition = false;
 	private Vector3 previousScale;
-	public bool inLateUpdate = false;
 
-	private Transform originT;
-	private Transform targetT;
-
-	void OnEnable() 
-	{
-		if (origin != null) originT = origin.GetComponent<Transform>();
-		if (target != null) targetT = target.GetComponent<Transform>();
-		
+	protected override void OnEnable() 
+	{	
+		base.OnEnable();
 		previousScale = targetT.localScale;
 	}
 
-	public void GameLoop() {
+	protected override void GameLoop() {
 		if (originT == null || targetT == null) return;
 
 		Vector3 currentTargetLocalScale =  targetT.localScale;
@@ -35,18 +26,4 @@ public class ScaleAsTarget : MonoBehaviour {
 			previousScale = currentTargetLocalScale;
 		}
 	}
-
-	[ContextMenu("SetThisGameObjectAsOrigin")]
-	public void SetThisGameObjectAsOrigin() {
-		origin = this.gameObject;
-	}
-
-	[ContextMenu("CreateTargetObject")]
-	public void CreateTargetObject() {
-		target = new GameObject("TargetOf_" + this.gameObject.name);
-		target.transform.position = this.gameObject.transform.position + this.gameObject.transform.forward;
-	}
-
-	void Update() { 		if (!inLateUpdate) GameLoop(); }
-	void LateUpdate() { 	if (inLateUpdate) GameLoop(); }
 }
